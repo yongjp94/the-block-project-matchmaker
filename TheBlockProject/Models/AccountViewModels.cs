@@ -64,6 +64,10 @@ namespace TheBlockProject.Models
 
     public class RegisterViewModel
     {
+        public IEnumerable<Race> Races { get; set; }
+        public IEnumerable<Gender> Genders { get; set; }
+        public IEnumerable<Neighborhood> Neighborhoods { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -72,13 +76,55 @@ namespace TheBlockProject.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Gender")]
+        public byte GenderId { get; set; }
+        public Gender Gender { get; set; }
+
+        [Required]
+        public int Age { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Neighborhood")]
+        public int NeighborhoodId { get; set; }
+        public Neighborhood Neighborhood { get; set; }
+
+        [Required]
+        [Display(Name = "Race")]
+        public byte RaceId { get; set; }
+        public Race Race { get; set; }
+
+        [Required]
+        public bool IsMarried { get; set; }
+
+        [Required]
+        [Display(Name = "Primary Language")]
+        public string PrimaryLanguage { get; set; }
+
+        [Required]
+        [Display(Name = "Other Language")]
+        public string OtherLanguage { get; set; }
     }
 
     public class ResetPasswordViewModel

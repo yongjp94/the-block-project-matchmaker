@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Validation;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -15,11 +16,13 @@ namespace TheBlockProject.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext _context;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,7 +142,18 @@ namespace TheBlockProject.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            if (_context == null) _context = new ApplicationDbContext();
+            var races = _context.Races.ToList();
+            var neighborhoods = _context.Neighborhoods.ToList();
+            var genders = _context.Genders.ToList();
+
+            var registerViewModel = new RegisterViewModel()
+            {
+                Genders = genders,
+                Races = races,
+                Neighborhoods = neighborhoods
+            };
+            return View(registerViewModel);
         }
 
         //
@@ -151,7 +165,23 @@ namespace TheBlockProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    GenderId = model.GenderId,
+                    Age = model.Age,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address,
+                    NeighborhoodId = model.NeighborhoodId,
+                    RaceId = model.RaceId,
+                    IsMarried = model.IsMarried,
+                    PrimaryLanguage = model.PrimaryLanguage,
+                    OtherLanguage = model.OtherLanguage
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
