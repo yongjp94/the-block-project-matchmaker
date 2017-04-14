@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TheBlockProject.Models;
+using System.Collections.Generic;
 
 namespace TheBlockProject.Controllers
 {

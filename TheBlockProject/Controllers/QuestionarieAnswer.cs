@@ -10,7 +10,6 @@ namespace TheBlockProject.Controllers
     {
         public int Id { get; set; }
         public string Answer { get; set; }
-        public string QuestionType { get; set; }
         public bool IsRequired { get; set; }
 
     }

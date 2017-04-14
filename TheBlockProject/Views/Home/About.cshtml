@@ -1,7 +1,173 @@
-﻿@{
-    ViewBag.Title = "About";
+﻿@using TheBlockProject.Models
+@model ProfileViewModel
+@{
+    // IF user already have completed creating basic profile
+    ViewBag.Title = "Create Profile";
+    // ELSE    ViewBag.Title = "Update Profile"
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MiddleName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.MiddleName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <form action="~/Controllers/" method="get">
+                            <fieldset>
+                                <select id="GenderType" name="GenderType">
+                                    <option value=""></option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Gay</option>
+                                    <option value="4">Lesbian</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNum, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PhoneNum, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PhoneNum, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Neighborhood, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <form action="~/Controllers/" method="get">
+                            <fieldset>
+                                <select id="NeighborhoodType" name="NeighborhoodType">
+                                    <option value=""></option>
+                                    <option value="1">Seattle</option>
+                                    <option value="2">Bellevue</option>
+                                    <option value="3">Mountlake Terrace</option>
+                                    <option value="4">Spokane</option>
+                                    <option value="5">Tacoma</option>
+                                    <option value="6">Shorline</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Race, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <form action="~/Controllers/" method="get">
+                            <fieldset>
+                                <select id="RaceType" name="RaceType">
+                                    <option value=""></option>
+                                    <option value="1">White</option>
+                                    <option value="2">African American</option>
+                                    <option value="3">Mexican</option>
+                                    <option value="4">Korean</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsMarried, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <form action="~/Controllers/" method="get">
+                            <fieldset>
+                                <select id="GenderType" name="GenderType">
+                                    <option value=""></option>
+                                    <option value="1">Married</option>
+                                    <option value="2">Single</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PrimaryLanguage, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <form action="~/Controllers/" method="get">
+                            <fieldset>
+                                <select id="GenderType" name="GenderType">
+                                    <option value=""></option>
+                                    <option value="1">English</option>
+                                    <option value="2">Spanish</option>
+                                    <option value="3">Korean</option>
+                                    <option value="4">Chinese</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SecondaryLanguage, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <form action="~/Controllers/" method="get">
+                            <fieldset>
+                                <select id="GenderType" name="GenderType">
+                                    <option value=""></option>
+                                    <option value="1">English</option>
+                                    <option value="2">Spanish</option>
+                                    <option value="3">Korean</option>
+                                    <option value="4">Chinese</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Next" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

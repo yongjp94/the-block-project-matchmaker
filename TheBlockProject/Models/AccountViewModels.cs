@@ -46,6 +46,60 @@ namespace TheBlockProject.Models
         public string Email { get; set; }
     }
 
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    public class ProfileViewModel
+    {
+        [Required]
+        [Display(Name = "First name")]
+//        [FirstName]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Middle name")]
+        public string MiddleName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Gender")]
+        public int Gender { get; set; }
+
+        [Required]
+        [Display(Name = "Age")]
+        public int Age { get; set; }
+
+        [Required]
+        [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNum { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
+        [Required]
+        [Display(Name = "Neighborhood")]
+        public string Neighborhood { get; set; }
+
+        [Required]
+        [Display(Name = "Race")]
+        public string Race { get; set; }
+
+        [Required]
+        [Display(Name = "Marital status")]
+        public bool IsMarried { get; set; }
+
+        [Required]
+        [Display(Name = "Primary language")]
+        public string PrimaryLanguage { get; set; }
+
+        [Required]
+        [Display(Name = "Secondary language")]
+        public string SecondaryLanguage { get; set; }
+    }
+
     public class LoginViewModel
     {
         [Required]
