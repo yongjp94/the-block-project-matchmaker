@@ -55,6 +55,17 @@ namespace TheBlockProject.Models
         [Display(Name = "Other Language")]
         public string OtherLanguage { get; set; }
 
+        [Required]
+        public byte UserTypeId { get; set; }
+        public UserType UserType { get; set; }
+
+        [Required]
+        public bool SurveyComplete { get; set; }
+        
+        public string Biography { get; set; }
+
+
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -64,11 +75,29 @@ namespace TheBlockProject.Models
         }
     }
 
+    public class UserType
+    {
+        public const byte RESIDENT = 1;
+        public const byte HOST = 2;
+        public const byte ADMIN = 3;
+
+        public byte Id { get; set; }
+        public string Name { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Race> Races { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Neighborhood> Neighborhoods { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<UserAnswer> UserAnswers { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Request> Requests { get; set; }
 
 
         public ApplicationDbContext()

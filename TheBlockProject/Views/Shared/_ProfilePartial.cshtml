@@ -1,0 +1,128 @@
+﻿@using TheBlockProject.Models
+@model TheBlockProject.ViewModels.ProfileViewModel
+    
+@{
+    var isMarried = Model.User.IsMarried ? "Yes" : "No";
+    var fullName = Model.User.FirstName + " " + Model.User.LastName;
+    var secondaryLanguage = Model.User.OtherLanguage.Length < 1 ? Model.User.OtherLanguage : "None";
+}
+
+<h2>@fullName</h2>
+<div class="container">
+    <h3>General</h3>
+    <div>
+        <h4>Photos</h4>
+        <div class="row">
+            <!-- Carousel -->
+            @if (Model.User.UserTypeId == UserType.HOST && Model.Photos != null && Model.Photos.Any())
+            {
+
+                var photos = Model.Photos.ToList();
+                @Html.Partial("_CarouselPartial", photos)
+            }
+            else
+            {
+                <p>The user currently has no photo to display.</p>
+            }
+        </div>
+    </div>
+
+
+    <div>
+        <h4>Videos</h4>
+        <div class="row">
+            @if (Model.User.UserTypeId == UserType.HOST && Model.Videos != null && Model.Videos.Any())
+            {
+                var index = 1;
+            <!-- List of Videos as links -->
+                foreach (var video in Model.Videos)
+                {
+                    <div class="col-xs-12">@Html.ActionLink("Video" + index, video.Url)</div>
+                    index++;
+                }
+            }
+            else
+            {
+                <p>The user currently has no provided link for a video.</p>
+            }
+        </div>
+    </div>
+
+    <div>
+        <h4>Biography</h4>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>@Model.User.Biography</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div>
+        <h4>Personal Information</h4>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <p><b>Age</b>: @Model.User.Age</p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <p><b>Gender</b>: @Model.User.Gender.Name</p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <p><b>Race/Ethnicity</b>: @Model.User.Race.Name</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <p><b>Neighborhood</b>: @Model.User.Neighborhood.Name</p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <p><b>Married?</b>: @isMarried</p>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <p><b>Primary Language</b>: @Model.User.PrimaryLanguage</p>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <p><b>Secondary Langauge</b>: @secondaryLanguage</p>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h4>Survey Answers</h4>
+        @if (Model.User.SurveyComplete)
+        {
+            List<Answer> answerList = Model.Answers.ToList();
+            var questions = new string[Model.Answers.Count()];
+            var answers = new string[questions.Length];
+            for (int i = 0; i < questions.Length; i++)
+            {
+                questions[i] = answerList[i].Question.Text;
+                answers[i] = answerList[i].Text;
+            }
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for (int i = 0; i < answers.Length; i++) 
+                {
+                        <tr>
+                            <td>@questions[i]</td>
+                            <td>@answers[i]</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>The user has not completed the survey yet.</p>
+        }
+    </div>
+
+</div>

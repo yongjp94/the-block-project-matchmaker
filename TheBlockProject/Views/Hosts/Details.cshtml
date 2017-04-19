@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNet.Identity
+@model TheBlockProject.ViewModels.ProfileViewModel
+
+@{
+    ViewBag.Title = "Host - " +  Model.User.LastName + ", " +Model.User.FirstName;
+}
+
+@Html.Partial("_ProfilePartial", ViewData.Model)
+
+@Html.ActionLink("Send Request", "SendRequest", "Hosts", new { senderId = User.Identity.GetUserId(), receiverId = Model.User.Id }, new { @class = "btn btn-primary"})
+

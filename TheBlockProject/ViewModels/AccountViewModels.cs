@@ -67,6 +67,12 @@ namespace TheBlockProject.Models
         public IEnumerable<Race> Races { get; set; }
         public IEnumerable<Gender> Genders { get; set; }
         public IEnumerable<Neighborhood> Neighborhoods { get; set; }
+        public IEnumerable<UserType> UserTypes { get; set; }
+
+        [Required]
+        [Display(Name = "User Account Type")]
+        public byte UserTypeId { get; set; }
+        public UserType UserType { get; set; }
 
         [Required]
         [EmailAddress]

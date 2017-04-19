@@ -169,7 +169,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HostsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -209,11 +212,74 @@
     <Compile Include="Migrations\201704122244563_DeleteDuplicateColumnForPhoneNumberInUserTable.Designer.cs">
       <DependentUpon>201704122244563_DeleteDuplicateColumnForPhoneNumberInUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704141652133_CreateSurveyModel.cs" />
+    <Compile Include="Migrations\201704141652133_CreateSurveyModel.Designer.cs">
+      <DependentUpon>201704141652133_CreateSurveyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704141759235_CreatePersonModels.cs" />
+    <Compile Include="Migrations\201704141759235_CreatePersonModels.Designer.cs">
+      <DependentUpon>201704141759235_CreatePersonModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150355350_CreatedSurveyRelatedDataModels.cs" />
+    <Compile Include="Migrations\201704150355350_CreatedSurveyRelatedDataModels.Designer.cs">
+      <DependentUpon>201704150355350_CreatedSurveyRelatedDataModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150356404_PopulateSurveyDatabase.cs" />
+    <Compile Include="Migrations\201704150356404_PopulateSurveyDatabase.Designer.cs">
+      <DependentUpon>201704150356404_PopulateSurveyDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150358481_PopulateQuestionTable.cs" />
+    <Compile Include="Migrations\201704150358481_PopulateQuestionTable.Designer.cs">
+      <DependentUpon>201704150358481_PopulateQuestionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150408578_PopulateAnswerTable.cs" />
+    <Compile Include="Migrations\201704150408578_PopulateAnswerTable.Designer.cs">
+      <DependentUpon>201704150408578_PopulateAnswerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150415346_AddedUserType.cs" />
+    <Compile Include="Migrations\201704150415346_AddedUserType.Designer.cs">
+      <DependentUpon>201704150415346_AddedUserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704150416011_PopulateUserTypeTable.cs" />
+    <Compile Include="Migrations\201704150416011_PopulateUserTypeTable.Designer.cs">
+      <DependentUpon>201704150416011_PopulateUserTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704180142134_AddSurveyCompletionMarkToUserModel.cs" />
+    <Compile Include="Migrations\201704180142134_AddSurveyCompletionMarkToUserModel.Designer.cs">
+      <DependentUpon>201704180142134_AddSurveyCompletionMarkToUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704190532385_UpdateDatabaseToMatchNewViewModels.cs" />
+    <Compile Include="Migrations\201704190532385_UpdateDatabaseToMatchNewViewModels.Designer.cs">
+      <DependentUpon>201704190532385_UpdateDatabaseToMatchNewViewModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704190624118_AddedPhotoVideoTables.cs" />
+    <Compile Include="Migrations\201704190624118_AddedPhotoVideoTables.Designer.cs">
+      <DependentUpon>201704190624118_AddedPhotoVideoTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704190757201_AddedRequestTable.cs" />
+    <Compile Include="Migrations\201704190757201_AddedRequestTable.Designer.cs">
+      <DependentUpon>201704190757201_AddedRequestTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704190800057_AddedRequiredAttributes.cs" />
+    <Compile Include="Migrations\201704190800057_AddedRequiredAttributes.Designer.cs">
+      <DependentUpon>201704190800057_AddedRequiredAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704191019288_AddRequestTable.cs" />
+    <Compile Include="Migrations\201704191019288_AddRequestTable.Designer.cs">
+      <DependentUpon>201704191019288_AddRequestTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\RequestModels.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\HostListViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\PersonModels.cs" />
     <Compile Include="Models\ProfileModels.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="Models\SurveyModels.cs" />
+    <Compile Include="ViewModels\SurveyViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,6 +294,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\TheBlockProject20170407091500 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\TheBlockProject20170414090559 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TheBlockProject20170414090559 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -251,8 +319,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -274,6 +340,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Survey\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Hosts\Index.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Hosts\Details.cshtml" />
+    <Content Include="Views\Shared\_ProfilePartial.cshtml" />
+    <Content Include="Views\Shared\_CarouselPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +386,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704122244563_DeleteDuplicateColumnForPhoneNumberInUserTable.resx">
       <DependentUpon>201704122244563_DeleteDuplicateColumnForPhoneNumberInUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141652133_CreateSurveyModel.resx">
+      <DependentUpon>201704141652133_CreateSurveyModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141759235_CreatePersonModels.resx">
+      <DependentUpon>201704141759235_CreatePersonModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150355350_CreatedSurveyRelatedDataModels.resx">
+      <DependentUpon>201704150355350_CreatedSurveyRelatedDataModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150356404_PopulateSurveyDatabase.resx">
+      <DependentUpon>201704150356404_PopulateSurveyDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150358481_PopulateQuestionTable.resx">
+      <DependentUpon>201704150358481_PopulateQuestionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150408578_PopulateAnswerTable.resx">
+      <DependentUpon>201704150408578_PopulateAnswerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150415346_AddedUserType.resx">
+      <DependentUpon>201704150415346_AddedUserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704150416011_PopulateUserTypeTable.resx">
+      <DependentUpon>201704150416011_PopulateUserTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704180142134_AddSurveyCompletionMarkToUserModel.resx">
+      <DependentUpon>201704180142134_AddSurveyCompletionMarkToUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704190532385_UpdateDatabaseToMatchNewViewModels.resx">
+      <DependentUpon>201704190532385_UpdateDatabaseToMatchNewViewModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704190624118_AddedPhotoVideoTables.resx">
+      <DependentUpon>201704190624118_AddedPhotoVideoTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704190757201_AddedRequestTable.resx">
+      <DependentUpon>201704190757201_AddedRequestTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704190800057_AddedRequiredAttributes.resx">
+      <DependentUpon>201704190800057_AddedRequiredAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704191019288_AddRequestTable.resx">
+      <DependentUpon>201704191019288_AddRequestTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

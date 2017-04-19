@@ -146,12 +146,14 @@ namespace TheBlockProject.Controllers
             var races = _context.Races.ToList();
             var neighborhoods = _context.Neighborhoods.ToList();
             var genders = _context.Genders.ToList();
+            var userTypes = _context.UserTypes.ToList();
 
             var registerViewModel = new RegisterViewModel()
             {
                 Genders = genders,
                 Races = races,
-                Neighborhoods = neighborhoods
+                Neighborhoods = neighborhoods,
+                UserTypes = userTypes
             };
             return View(registerViewModel);
         }
@@ -179,7 +181,10 @@ namespace TheBlockProject.Controllers
                     RaceId = model.RaceId,
                     IsMarried = model.IsMarried,
                     PrimaryLanguage = model.PrimaryLanguage,
-                    OtherLanguage = model.OtherLanguage
+                    OtherLanguage = model.OtherLanguage,
+
+                    // Temp code to make all users types into resident type
+                    UserTypeId = model.UserTypeId
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

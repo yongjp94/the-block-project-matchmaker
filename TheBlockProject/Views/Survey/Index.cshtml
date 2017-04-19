@@ -1,0 +1,38 @@
+﻿@model TheBlockProject.Models.SurveyViewModel
+
+@{
+    ViewBag.Title = "Questionnaire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Questionnaire</h2>
+
+<p>This is a page to use your build your profile through completing a questionnaire.</p>
+
+@using (Html.BeginForm("Submit", "Survey", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    var questionNumber = 0;
+    foreach (var question in Model.Questions)
+    {
+        var questionText = question.Text;
+        var answerList = Model.Answers.Where(a => a.QuestionId == question.Id).ToList();
+        <div class="form-group">
+            <h5><i>Question #@(questionNumber + 1)</i> - @questionText</h5>
+            @Html.DropDownListFor(m => m.UserAnswerIds[questionNumber],
+                        new SelectList(answerList, "Id", "Text"),
+                        "Select your answer", new { @class = "form-control"})
+        </div>
+        questionNumber++;
+    }
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-12">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

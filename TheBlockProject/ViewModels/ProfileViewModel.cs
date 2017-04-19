@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using TheBlockProject.Models;
+
+namespace TheBlockProject.ViewModels
+{
+    public class ProfileViewModel
+    {
+        public ApplicationUser User { get; set; }
+        public IEnumerable<Answer> Answers { get; set; }
+        public IEnumerable<Photo> Photos { get; set; }
+        public IEnumerable<Video> Videos { get; set; }
+    }
+}

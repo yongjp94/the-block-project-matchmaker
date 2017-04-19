@@ -1,6 +1,7 @@
 ﻿@model TheBlockProject.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -99,9 +100,17 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.NeighborhoodId)
                 @Html.DropDownListFor(m => m.NeighborhoodId,
-            new SelectList(Model.Neighborhoods, "Id", "Name"),
-            "Select your neighborhood", new { @class = "form-control" })
+                    new SelectList(Model.Neighborhoods, "Id", "Name"),
+                    "Select your neighborhood", new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.NeighborhoodId)
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserTypeId)
+                @Html.DropDownListFor(m => m.UserTypeId,
+            new SelectList(Model.UserTypes, "Id", "Name"),
+            "Select your user type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.UserTypeId)
             </div>
 
             <div class="checkbox">

@@ -1,0 +1,40 @@
+﻿@model TheBlockProject.ViewModels.HostListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    bool hostExists = Model.Hosts != null && Model.Hosts.Any();
+}
+
+<h2>Find A Host</h2>
+
+@if (!hostExists)
+{
+    <h3>I'm sorry!</h3>
+    <p>There is no host available for you at the moment...</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Neighborhood</th>
+                <th>Match Percentage</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var host in Model.Hosts)
+            {
+                <tr>
+                    <td>@Html.ActionLink("PHOTO GOES HERE", "Details", "Hosts", new { Id = host.Id}, false)</td>
+                    <td>@host.LastName, @host.FirstName</td>
+                    <td>@host.Neighborhood.Name</td>
+                    <td>@Model.HostsPercentage[host.Id]%</td>
+                    <td>@Html.ActionLink("See More", "Details", "Hosts", new { Id = host.Id}, false)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
