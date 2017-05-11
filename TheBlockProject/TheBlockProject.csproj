@@ -268,6 +268,10 @@
     <Compile Include="Migrations\201704191019288_AddRequestTable.Designer.cs">
       <DependentUpon>201704191019288_AddRequestTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705111917509_UpdatedRequestForStatusAndCreatedDate.cs" />
+    <Compile Include="Migrations\201705111917509_UpdatedRequestForStatusAndCreatedDate.Designer.cs">
+      <DependentUpon>201705111917509_UpdatedRequestForStatusAndCreatedDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RequestModels.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -293,9 +297,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\TheBlockProject20170407091500 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\TheBlockProject20170414090559 - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\TheBlockProject20170414090559 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\TheBlockProject20170511123820 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TheBlockProject20170511123820 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -429,6 +432,12 @@
     <EmbeddedResource Include="Migrations\201704191019288_AddRequestTable.resx">
       <DependentUpon>201704191019288_AddRequestTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705111917509_UpdatedRequestForStatusAndCreatedDate.resx">
+      <DependentUpon>201705111917509_UpdatedRequestForStatusAndCreatedDate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

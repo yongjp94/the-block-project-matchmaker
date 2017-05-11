@@ -6,11 +6,15 @@
 
 @if (!Model.User.SurveyComplete)
 {
-    <div>
-        <p4><i>Please, complete your survey!</i></p4>
-        <p class="text-warning">Your profile is not complete, which may impact your matching process with other users.</p>
-        @Html.ActionLink("Complete Survey", "Index", "Survey", new {})
+    <div class="container">
+        <div class="jumbotron">
+            <p4><i>Please, complete your survey!</i></p4>
+            <p class="text-warning">Your profile is not complete, which may impact your matching process with other users.</p>
+
+            @Html.ActionLink("Complete Survey", "Index", "Survey")
+        </div>
     </div>
+
 }
 
 @Html.Partial("_ProfilePartial", Model)

@@ -29,8 +29,15 @@ namespace TheBlockProject.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = _context.Users.Single(u => u.Id == userId);
-            
-            if (user.UserTypeId != UserType.RESIDENT) return HttpNotFound();
+
+            if (user.UserTypeId == UserType.HOST)
+            {
+                // Host is not permitted to view this page
+                return RedirectToAction("Index", "Profile");
+            }
+
+            // If user is resident but have not completed survey, redirect to survey
+            if (user.UserTypeId == UserType.RESIDENT && !user.SurveyComplete) return RedirectToAction("Index", "Survey");
             
             var hosts = _context.Users.Include(u => u.UserType)
                 .Include(u => u.Neighborhood)
@@ -88,11 +95,13 @@ namespace TheBlockProject.Controllers
                     r.SenderId == senderId &&
                     r.ReceiverId == receiverId)) return Redirect("Index");
             
-
+            
             var req = new Request()
             {
                 SenderId = senderId,
-                ReceiverId = receiverId
+                ReceiverId = receiverId,
+                CreatedDate = DateTime.Today,
+                Status = RequestStatus.PENDING
             };
 
             try

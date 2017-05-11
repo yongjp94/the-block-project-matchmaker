@@ -100,24 +100,26 @@
                 questions[i] = answerList[i].Question.Text;
                 answers[i] = answerList[i].Text;
             }
-
-            <table>
-                <thead>
-                <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
-                </tr>
-                </thead>
-                <tbody>
-                @for (int i = 0; i < answers.Length; i++) 
-                {
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>@questions[i]</td>
-                            <td>@answers[i]</td>
+                            <th>Question</th>
+                            <th>Answer</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < answers.Length; i++)
+                        {
+                            <tr>
+                                <td>@questions[i]</td>
+                                <td>@answers[i]</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
         }
         else
         {
