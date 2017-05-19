@@ -297,6 +297,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\tbpPrototype - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TheBlockProject20170511123820 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TheBlockProject20170511123820 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

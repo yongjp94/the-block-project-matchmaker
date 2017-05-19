@@ -45,7 +45,7 @@ namespace TheBlockProject.Controllers
 
             var viewModel = new DashboardViewModel()
             {
-                User = _context.Users.Single(u => u.Id == userId),
+                User = _context.Users.SingleOrDefault(u => u.Id == userId),
                 Requests = requests
             };
 

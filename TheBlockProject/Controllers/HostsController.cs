@@ -142,7 +142,7 @@ namespace TheBlockProject.Controllers
             var commonAnswersNum = query.Count();
 
             int totalCommonQuestionsNum = _context.Questions.Count(q => q.SurveyId == 3);
-            double perc = 1.0 * commonAnswersNum / totalCommonQuestionsNum;
+            double perc = 100.0 * commonAnswersNum / totalCommonQuestionsNum;
             ret = Convert.ToInt32(perc);
             
 

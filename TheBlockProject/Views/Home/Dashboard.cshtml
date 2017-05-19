@@ -3,10 +3,29 @@
 @{
     ViewBag.Title = "Dashboard";
     bool requestExists = Model.Requests.Any();
+    bool todo = false;
 }
 
 <h2>Dashboard</h2>
-<h3>Status of Requests</h3>
+
+
+<h3>To-do List</h3>
+<ul>
+    @if (!Model.User.SurveyComplete)
+    {
+        todo = true;
+        <li>@Html.ActionLink("Complete your survey", "Index", "Survey")</li>
+    }
+
+</ul>
+@if (!todo)
+{
+    <div class="container">
+        <p>There is nothing to-do for now!</p>
+    </div>
+}
+
+<h3>Track Requests</h3>
 @if (requestExists)
 {
     <div class="container">
@@ -29,8 +48,26 @@
                         <td>@request.Receiver.LastName, @request.Receiver.FirstName</td>
                         <td>@request.Status</td>
                         <!-- Request view and response not yet implemented-->
-                        <td>@Html.ActionLink("See More", "Details", "Hosts", new { Id = request.Sender.Id}, false)</td>
+                        <td><button class="btn btn-primary" data-toggle="modal" data-target="#@request.Id-modal">Respond</button></td>
                     </tr>
+                    <div id="@request.Id-modal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Request from @request.Sender.FirstName to @request.Receiver.FirstName</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Request information -->
+                                    INFORMATION ABOUT REQUEST
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Accept</button>
+                                    <button type="button" class="btn btn-danger">Deny</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
             </tbody>
 
@@ -40,11 +77,4 @@
     
 }
 
-<h3>To-do List</h3>
-<ul>
-    @if (!Model.User.SurveyComplete)
-    {
-    <li>@Html.ActionLink("Complete your survey", "Index", "Survey")</li>
-    }
-</ul>
 
