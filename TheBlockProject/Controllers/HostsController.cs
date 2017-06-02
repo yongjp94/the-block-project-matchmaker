@@ -30,14 +30,14 @@ namespace TheBlockProject.Controllers
             var userId = User.Identity.GetUserId();
             var user = _context.Users.Single(u => u.Id == userId);
 
-            if (user.UserTypeId == UserType.HOST)
+            if (User.IsInRole(UserType.HOST_ROLE))
             {
                 // Host is not permitted to view this page
                 return RedirectToAction("Index", "Profile");
             }
 
             // If user is resident but have not completed survey, redirect to survey
-            if (user.UserTypeId == UserType.RESIDENT && !user.SurveyComplete) return RedirectToAction("Index", "Survey");
+            if (User.IsInRole(UserType.RESIDENT_ROLE) && !user.SurveyComplete) return RedirectToAction("Index", "Survey");
             
             var hosts = _context.Users.Include(u => u.UserType)
                 .Include(u => u.Neighborhood)
@@ -45,11 +45,14 @@ namespace TheBlockProject.Controllers
 
             var percentages = hosts.ToDictionary(host => host.Id, host => GetMatchPercentage(user.Id, host.Id));
 
+            var photos = _context.Photos.ToList();
+
             var viewModel = new HostListViewModel()
             {
                 Hosts = hosts,
                 HostsPercentage = percentages,
-                User = user
+                User = user,
+                Photos = photos
             };
 
             return View(viewModel);
@@ -63,6 +66,7 @@ namespace TheBlockProject.Controllers
                 .Include(u => u.Neighborhood)
                 .Include(u => u.Race)
                 .Include(u => u.UserType)
+                .Include(u => u.Language)
                 .Single(u => u.Id == id);
             var hostAnswers = _context.UserAnswers.Where(ua => ua.ApplicationUserId == id).ToList();
 
@@ -147,6 +151,19 @@ namespace TheBlockProject.Controllers
             
 
             return ret;
+        }
+
+        public FileContentResult ThumbnailForHost(string uid)
+        {
+            Photo photo = _context.Photos.FirstOrDefault(p => p.UserId == uid);
+            if (photo != null)
+            {
+                return File(photo.Thumbnail, photo.ImageMimeType.ToString());
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

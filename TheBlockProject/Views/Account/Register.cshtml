@@ -4,133 +4,139 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="row">
-        <div class="col-md-7">
-            <div class="form-group">
-                @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.FirstName)
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.LastName)
+<div class="container">
+    <h2>@ViewBag.Title.</h2>
 
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Email)
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password)
-
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password)
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Age, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Age)
-
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.PhoneNumber)
-
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Address)
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.PrimaryLanguage, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.PrimaryLanguage, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.PrimaryLanguage)
-
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.OtherLanguage, new { @class = "col-md-2 control-label" })
-                @Html.TextBoxFor(m => m.OtherLanguage, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.OtherLanguage)
-            </div>
-        </div>
-
-        <div class="col-md-5">
-            <div class="form-group">
-                @Html.LabelFor(m => m.GenderId)
-                @Html.DropDownListFor(m => m.GenderId,
-            new SelectList(Model.Genders, "Id", "Name"),
-            "Select your gender", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.GenderId)
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.RaceId)
-                @Html.DropDownListFor(m => m.RaceId,
-            new SelectList(Model.Races, "Id", "Name"),
-            "Select your race", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.RaceId)
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.NeighborhoodId)
-                @Html.DropDownListFor(m => m.NeighborhoodId,
-                    new SelectList(Model.Neighborhoods, "Id", "Name"),
-                    "Select your neighborhood", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.NeighborhoodId)
-            </div>
-            
-            <div class="form-group">
-                @Html.LabelFor(m => m.UserTypeId)
-                @Html.DropDownListFor(m => m.UserTypeId,
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr/>
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserTypeId)
+            @Html.DropDownListFor(m => m.UserTypeId,
             new SelectList(Model.UserTypes, "Id", "Name"),
             "Select your user type", new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.UserTypeId)
+            @Html.ValidationMessageFor(m => m.UserTypeId)
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LastName)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Age, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Age)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber)
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
             </div>
 
-            <div class="checkbox">
-                <label>
-                    @Html.CheckBoxFor(m => m.IsMarried)
-                    Are you married?
-                </label>
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.GenderId)
+                    @Html.DropDownListFor(m => m.GenderId,
+            new SelectList(Model.Genders, "Id", "Name"),
+            "Select your gender", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.GenderId)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.RaceId)
+                    @Html.DropDownListFor(m => m.RaceId,
+                    new SelectList(Model.Races, "Id", "Name"),
+                    "Select your race", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RaceId)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LanguageId)
+                    @Html.DropDownListFor(m => m.LanguageId,
+                    new SelectList(Model.Languages, "Id", "Name"),
+                    "Select your primary language", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LanguageId)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.OtherLanguage)
+                    <p><i>If you have selected "Other," please write your language here. Otherwise, please write your secondary language.</i></p>
+                    @Html.TextBoxFor(m => m.OtherLanguage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OtherLanguage)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NeighborhoodId)
+                    @Html.DropDownListFor(m => m.NeighborhoodId,
+                    new SelectList(Model.Neighborhoods, "Id", "Name"),
+                    "Select your neighborhood", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NeighborhoodId)
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.IsMarried)
+                        Are you married?
+                    </label>
+                </div>
             </div>
         </div>
-    </div>
-    
 
-    
 
-    <div class="form-group">
-        <div class="col-md-offset-5 col-md-12">
-            <input type="submit" class="btn btn-primary" value="Register" />
+
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-12">
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </div>
         </div>
-    </div>
-}
+    }
+    
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -28,11 +28,18 @@ else
             @foreach (var host in Model.Hosts)
             {
                 <tr>
-                    <td>@Html.ActionLink("PHOTO GOES HERE", "Details", "Hosts", new { Id = host.Id}, false)</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Hosts", new {Id = host.Id})" title="View Detailed View of Host">
+                            <img class="img-thumbnail" src="@Url.Action("ThumbnailForHost", "Hosts", new { uid = host.Id })"
+                                 style="width: 7em"/>
+                        </a>
+                    </td>
                     <td>@host.LastName, @host.FirstName</td>
                     <td>@host.Neighborhood.Name</td>
                     <td>@Model.HostsPercentage[host.Id]%</td>
-                    <td>@Html.ActionLink("See More", "Details", "Hosts", new { Id = host.Id}, false)</td>
+                    <td>
+                        @Html.ActionLink("See More", "Details", "Hosts", new {Id = host.Id}, false)
+                    </td>
                 </tr>
             }
         </tbody>

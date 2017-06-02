@@ -4,18 +4,24 @@
     ViewBag.Title = "My Profile";
 }
 
-@if (!Model.User.SurveyComplete)
-{
-    <div class="container">
-        <div class="jumbotron">
+<div class="container">
+    <br/>
+    <div class="col-xs-12" style="height: 20px"></div>
+    @if (!Model.User.SurveyComplete)
+    {
+        <div class="container">
+
             <p4><i>Please, complete your survey!</i></p4>
             <p class="text-warning">Your profile is not complete, which may impact your matching process with other users.</p>
 
             @Html.ActionLink("Complete Survey", "Index", "Survey")
+
         </div>
-    </div>
 
-}
+        <hr />
+    }
 
-@Html.Partial("_ProfilePartial", Model)
+    @Html.Partial("_ProfilePartial", Model)
+</div>
+
 

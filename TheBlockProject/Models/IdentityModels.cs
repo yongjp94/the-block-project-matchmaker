@@ -24,7 +24,7 @@ namespace TheBlockProject.Models
         public Gender Gender { get; set; }
 
         [Required]
-        public int Age { get; set; }
+        public int? Age { get; set; }
         
         [Required]
         [Display(Name = "Phone Number")]
@@ -49,7 +49,8 @@ namespace TheBlockProject.Models
 
         [Required]
         [Display(Name = "Primary Language")]
-        public string PrimaryLanguage { get; set; }
+        public int LanguageId { get; set; }
+        public Language Language { get; set; }
 
         [Required]
         [Display(Name = "Other Language")]
@@ -81,6 +82,10 @@ namespace TheBlockProject.Models
         public const byte HOST = 2;
         public const byte ADMIN = 3;
 
+        public const string RESIDENT_ROLE = "Resident";
+        public const string HOST_ROLE = "Host";
+        public const string ADMIN_ROLE = "Admin";
+
         public byte Id { get; set; }
         public string Name { get; set; }
     }
@@ -90,6 +95,7 @@ namespace TheBlockProject.Models
         public DbSet<Race> Races { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Neighborhood> Neighborhoods { get; set; }
+        public DbSet<Language> Languages { get; set; }
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
@@ -98,6 +104,7 @@ namespace TheBlockProject.Models
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<QuestionType> QuestionTypes { get; set; }
 
 
         public ApplicationDbContext()

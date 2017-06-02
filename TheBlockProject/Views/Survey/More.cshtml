@@ -1,0 +1,60 @@
+﻿
+@using Microsoft.Ajax.Utilities
+@using TheBlockProject.Models
+@model TheBlockProject.Models.SurveyViewModel
+
+@{
+    ViewBag.Title = "Questionnaire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Additional Details</h2>
+
+<hr />
+
+@using (Html.BeginForm("SubmitMore", "Survey", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.User.Id)
+
+    var questionNumber = 0;
+
+    <h4>Matchmaking Questions</h4>
+
+    foreach (var question in Model.Questions)
+    {
+
+        <div class="form-group">
+            <h5>
+                <i>Q #@(questionNumber + 1)</i>:
+                <span>@question.Text</span>
+            </h5>
+
+            <!-- If a question has a comment, display it here -->
+            @if (!question.Comment.IsNullOrWhiteSpace())
+            {
+                <h6>@question.Comment</h6>
+            }
+
+            <!--Display Text Area-->
+            @Html.TextAreaFor(m => m.UserAnswerTexts[questionNumber], 5, 40, new {})
+
+        </div>
+        questionNumber++;
+    }
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-12">
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        </div>
+                    </div>
+
+
+                    }
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

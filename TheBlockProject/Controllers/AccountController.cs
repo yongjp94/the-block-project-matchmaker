@@ -6,7 +6,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TheBlockProject.Models;
@@ -147,13 +149,15 @@ namespace TheBlockProject.Controllers
             var neighborhoods = _context.Neighborhoods.ToList();
             var genders = _context.Genders.ToList();
             var userTypes = _context.UserTypes.ToList();
+            var languages = _context.Languages.ToList();
 
             var registerViewModel = new RegisterViewModel()
             {
                 Genders = genders,
                 Races = races,
                 Neighborhoods = neighborhoods,
-                UserTypes = userTypes
+                UserTypes = userTypes,
+                Languages = languages
             };
             return View(registerViewModel);
         }
@@ -167,6 +171,7 @@ namespace TheBlockProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.OtherLanguage.IsNullOrWhiteSpace()) model.OtherLanguage = "None";
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
@@ -180,16 +185,31 @@ namespace TheBlockProject.Controllers
                     NeighborhoodId = model.NeighborhoodId,
                     RaceId = model.RaceId,
                     IsMarried = model.IsMarried,
-                    PrimaryLanguage = model.PrimaryLanguage,
+                    LanguageId = model.LanguageId,
                     OtherLanguage = model.OtherLanguage,
-
-                    // Temp code to make all users types into resident type
                     UserTypeId = model.UserTypeId
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Temp code to seed role
+                    /*
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+                    await roleManager.CreateAsync(new IdentityRole("Host"));
+                    await roleManager.CreateAsync(new IdentityRole("Resident"));
+                    await roleManager.CreateAsync(new IdentityRole("Admin"));
+                    */
+
+                    var roleName = "Resident";
+                    if (model.UserTypeId == UserType.HOST) roleName = "Host";
+                    if (model.UserTypeId == UserType.ADMIN) roleName = "Admin";
+
+                    await UserManager.AddToRoleAsync(user.Id, roleName);
+
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

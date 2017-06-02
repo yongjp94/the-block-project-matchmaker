@@ -12,5 +12,9 @@ namespace TheBlockProject.ViewModels
         public IEnumerable<Answer> Answers { get; set; }
         public IEnumerable<Photo> Photos { get; set; }
         public IEnumerable<Video> Videos { get; set; }
+        public string Biography { get; set; }
+        public string VideoUrl { get; set; }
+        public byte[] ImageData { get; set; }
+        public HttpPostedFileBase File { get; set; }
     }
 }

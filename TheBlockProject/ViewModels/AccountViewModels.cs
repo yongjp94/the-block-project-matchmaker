@@ -68,6 +68,7 @@ namespace TheBlockProject.Models
         public IEnumerable<Gender> Genders { get; set; }
         public IEnumerable<Neighborhood> Neighborhoods { get; set; }
         public IEnumerable<UserType> UserTypes { get; set; }
+        public IEnumerable<Language> Languages { get; set; }
 
         [Required]
         [Display(Name = "User Account Type")]
@@ -100,10 +101,9 @@ namespace TheBlockProject.Models
         [Required]
         [Display(Name = "Gender")]
         public byte GenderId { get; set; }
-        public Gender Gender { get; set; }
 
         [Required]
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
@@ -114,21 +114,18 @@ namespace TheBlockProject.Models
         [Required]
         [Display(Name = "Neighborhood")]
         public int NeighborhoodId { get; set; }
-        public Neighborhood Neighborhood { get; set; }
 
         [Required]
         [Display(Name = "Race")]
         public byte RaceId { get; set; }
-        public Race Race { get; set; }
 
         [Required]
         public bool IsMarried { get; set; }
 
         [Required]
         [Display(Name = "Primary Language")]
-        public string PrimaryLanguage { get; set; }
+        public int LanguageId { get; set; }
 
-        [Required]
         [Display(Name = "Other Language")]
         public string OtherLanguage { get; set; }
     }

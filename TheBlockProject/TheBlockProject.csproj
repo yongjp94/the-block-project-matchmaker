@@ -272,6 +272,58 @@
     <Compile Include="Migrations\201705111917509_UpdatedRequestForStatusAndCreatedDate.Designer.cs">
       <DependentUpon>201705111917509_UpdatedRequestForStatusAndCreatedDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705252058254_PopulateSurveyQuestionsWithRealisticQuestions.cs" />
+    <Compile Include="Migrations\201705252058254_PopulateSurveyQuestionsWithRealisticQuestions.Designer.cs">
+      <DependentUpon>201705252058254_PopulateSurveyQuestionsWithRealisticQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252146162_PopulateSurveyQuestionsWithRealisticQuestions2.cs" />
+    <Compile Include="Migrations\201705252146162_PopulateSurveyQuestionsWithRealisticQuestions2.Designer.cs">
+      <DependentUpon>201705252146162_PopulateSurveyQuestionsWithRealisticQuestions2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252146344_PopulateSurveyQuestionsWithRealisticQuestions3.cs" />
+    <Compile Include="Migrations\201705252146344_PopulateSurveyQuestionsWithRealisticQuestions3.Designer.cs">
+      <DependentUpon>201705252146344_PopulateSurveyQuestionsWithRealisticQuestions3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252148054_PopulateSurveyQuestionsWithRealisticQuestions4.cs" />
+    <Compile Include="Migrations\201705252148054_PopulateSurveyQuestionsWithRealisticQuestions4.Designer.cs">
+      <DependentUpon>201705252148054_PopulateSurveyQuestionsWithRealisticQuestions4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252148367_PopulateSurveyQuestionsWithRealisticQuestions5.cs" />
+    <Compile Include="Migrations\201705252148367_PopulateSurveyQuestionsWithRealisticQuestions5.Designer.cs">
+      <DependentUpon>201705252148367_PopulateSurveyQuestionsWithRealisticQuestions5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252223293_PopulateAnswerDatabase.cs" />
+    <Compile Include="Migrations\201705252223293_PopulateAnswerDatabase.Designer.cs">
+      <DependentUpon>201705252223293_PopulateAnswerDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705302307442_AddAndPopulateLangaugeTable.cs" />
+    <Compile Include="Migrations\201705302307442_AddAndPopulateLangaugeTable.Designer.cs">
+      <DependentUpon>201705302307442_AddAndPopulateLangaugeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705302324555_UpdateIdentityModelForPureViewModel.cs" />
+    <Compile Include="Migrations\201705302324555_UpdateIdentityModelForPureViewModel.Designer.cs">
+      <DependentUpon>201705302324555_UpdateIdentityModelForPureViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310503554_AddQuestionTypes.cs" />
+    <Compile Include="Migrations\201705310503554_AddQuestionTypes.Designer.cs">
+      <DependentUpon>201705310503554_AddQuestionTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310507414_IntegrateQuestionTypes.cs" />
+    <Compile Include="Migrations\201705310507414_IntegrateQuestionTypes.Designer.cs">
+      <DependentUpon>201705310507414_IntegrateQuestionTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310518505_PopulateDbWithNewQuestions.cs" />
+    <Compile Include="Migrations\201705310518505_PopulateDbWithNewQuestions.Designer.cs">
+      <DependentUpon>201705310518505_PopulateDbWithNewQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311935106_ChangedPhotoModel.cs" />
+    <Compile Include="Migrations\201705311935106_ChangedPhotoModel.Designer.cs">
+      <DependentUpon>201705311935106_ChangedPhotoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311953561_ChangedPhotoModel2.cs" />
+    <Compile Include="Migrations\201705311953561_ChangedPhotoModel2.Designer.cs">
+      <DependentUpon>201705311953561_ChangedPhotoModel2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RequestModels.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -351,9 +403,13 @@
     <Content Include="Views\Hosts\Details.cshtml" />
     <Content Include="Views\Shared\_ProfilePartial.cshtml" />
     <Content Include="Views\Shared\_CarouselPartial.cshtml" />
+    <Content Include="Views\Survey\More.cshtml" />
+    <Content Include="Views\Survey\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Uploads\Originals\" />
+    <Folder Include="Content\Uploads\Thumbnails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -435,6 +491,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705111917509_UpdatedRequestForStatusAndCreatedDate.resx">
       <DependentUpon>201705111917509_UpdatedRequestForStatusAndCreatedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252058254_PopulateSurveyQuestionsWithRealisticQuestions.resx">
+      <DependentUpon>201705252058254_PopulateSurveyQuestionsWithRealisticQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252146162_PopulateSurveyQuestionsWithRealisticQuestions2.resx">
+      <DependentUpon>201705252146162_PopulateSurveyQuestionsWithRealisticQuestions2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252146344_PopulateSurveyQuestionsWithRealisticQuestions3.resx">
+      <DependentUpon>201705252146344_PopulateSurveyQuestionsWithRealisticQuestions3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252148054_PopulateSurveyQuestionsWithRealisticQuestions4.resx">
+      <DependentUpon>201705252148054_PopulateSurveyQuestionsWithRealisticQuestions4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252148367_PopulateSurveyQuestionsWithRealisticQuestions5.resx">
+      <DependentUpon>201705252148367_PopulateSurveyQuestionsWithRealisticQuestions5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252223293_PopulateAnswerDatabase.resx">
+      <DependentUpon>201705252223293_PopulateAnswerDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302307442_AddAndPopulateLangaugeTable.resx">
+      <DependentUpon>201705302307442_AddAndPopulateLangaugeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705302324555_UpdateIdentityModelForPureViewModel.resx">
+      <DependentUpon>201705302324555_UpdateIdentityModelForPureViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310503554_AddQuestionTypes.resx">
+      <DependentUpon>201705310503554_AddQuestionTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310507414_IntegrateQuestionTypes.resx">
+      <DependentUpon>201705310507414_IntegrateQuestionTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310518505_PopulateDbWithNewQuestions.resx">
+      <DependentUpon>201705310518505_PopulateDbWithNewQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311935106_ChangedPhotoModel.resx">
+      <DependentUpon>201705311935106_ChangedPhotoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311953561_ChangedPhotoModel2.resx">
+      <DependentUpon>201705311953561_ChangedPhotoModel2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

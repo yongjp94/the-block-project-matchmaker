@@ -41,11 +41,21 @@ namespace TheBlockProject.Models
         public int Id { get; set; }
         [Required]
         public string Text { get; set; }
+        public string Text2 { get; set; }
         public string Comment { get; set; }
         [Required]
         public byte SurveyId { get; set; }
         [Required]
-        public bool IsMandatory { get; set; }
+        public byte QuestionTypeId { get; set; }
+        public QuestionType QuestionType { get; set; }
+    }
+
+    public class QuestionType
+    {
+        [Required]
+        public byte Id { get; set; }
+        [Required]
+        public string Name { get; set; }
     }
 
     public class Answer

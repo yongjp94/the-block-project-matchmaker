@@ -11,5 +11,6 @@ namespace TheBlockProject.Models
         public IEnumerable<Answer> Answers { get; set; }
         public ApplicationUser User { get; set; }
         public int[] UserAnswerIds { get; set; }
+        public string[] UserAnswerTexts { get; set; }
     }
 }

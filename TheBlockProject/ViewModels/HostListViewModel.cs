@@ -11,5 +11,6 @@ namespace TheBlockProject.ViewModels
         public Dictionary<string, int> HostsPercentage;
         public IEnumerable<ApplicationUser> Hosts;
         public ApplicationUser User;
+        public IEnumerable<Photo> Photos { get; set; }
     }
 }

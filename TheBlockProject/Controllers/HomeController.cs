@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace TheBlockProject.Controllers
 {
-    [AllowAnonymous]
+    
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
@@ -25,6 +25,7 @@ namespace TheBlockProject.Controllers
             _context.Dispose();
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             // If user is not logged in, show welcome view
@@ -45,11 +46,36 @@ namespace TheBlockProject.Controllers
 
             var viewModel = new DashboardViewModel()
             {
-                User = _context.Users.SingleOrDefault(u => u.Id == userId),
+                User = _context.Users.Include(u => u.UserType).SingleOrDefault(u => u.Id == userId),
                 Requests = requests
             };
 
             return View(viewModel);
+        }
+
+        public ActionResult UpdateRequest(int requestId, string newStatus)
+        {
+            try
+            {
+                _context.Requests.Single(r => r.Id == requestId).Status = newStatus;
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            var userId = User.Identity.GetUserId();
+            var viewModel = new DashboardViewModel()
+            {
+                User = _context.Users.Include(u => u.UserType).SingleOrDefault(u => u.Id == userId),
+                Requests = _context.Requests
+                        .Include(req => req.Sender)
+                        .Include(req => req.Receiver)
+                        .Where(req => req.ReceiverId == userId || req.SenderId == userId)
+            };
+            
+
+            return View("Dashboard", viewModel);
         }
     }
 }
